@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SPA Routing with Server</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/contact-us">Contact Us</a>
+    </nav>
+    <div id="app"></div>
+    <script>
+      const app = document.getElementById("app");
+      routes = {
+        "/": "<h1>HOME</h1>",
+        "/about": "<h1>ABOUT</h1>",
+        "/contact-us": "<h1>CONTACT US</h1>",
+      };
+
+      function getPath(path) {
+        return path
+          .replace("http://127.0.0.1:5500/01-week/intro/index.html", "")
+          .replace("index.html", "/");
+      }
+
+      function render(path) {
+        const contentForPath = routes[path];
+        if (!contentForPath) return;
+        app.innerHTML = contentForPath;
+      }
+
+      document.querySelectorAll("a").forEach((el) => {
+        el.addEventListener("click", (e) => {
+          e.preventDefault();
+          const { target } = e;
+          const path = target.getAttribute("href");
+          render(path);
+          history.pushState("", "", path);
+        });
+      });
+
+      render(window.location.pathname);
+
+      window.addEventListener("popstate", (e) => {
+        e.preventDefault();
+        render(location.pathname);
+      });
+
+      window.addEventListener("hashchange", (e) => {
+        e.preventDefault();
+        render(location.pathname);
+      });
+    </script>
+  </body>
+</html>

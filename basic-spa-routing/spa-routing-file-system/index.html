@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </nav>
+    <div id="app"></div>
+
+    <script>
+      const app = document.getElementById("app");
+
+      const routes = {
+        "/": "<h1>Home</h1>",
+        "/about": "<h1>About</h1>",
+        "/contact": "<h1>Contact</h1>",
+      };
+
+      function getPath(path) {
+        return path
+          .replace(
+            "file:///Users/petyanaydenova/Documents/softUni/ng-2023/basic-html/",
+            ""
+          )
+          .replace("index.html", "/");
+      }
+
+      function render(path) {
+        const contentForPath = routes[path];
+        if (!contentForPath) return;
+        app.innerHTML = contentForPath;
+      }
+
+      document.querySelectorAll("a").forEach((el) => {
+        el.addEventListener("click", (e) => {
+          e.preventDefault();
+          const { target } = e;
+          const path = target.getAttribute("href");
+
+          render(path);
+          history.pushState("", "", path);
+        });
+      });
+
+      render(location.pathname); // this will work only with http protocol
+      // render(getPath(window.location.toString()));
+
+      window.addEventListener("popstate", (e) => {
+        e.preventDefault();
+        render(location.pathname); // this will work only with http protocol
+      });
+
+      window.addEventListener("hashchange", (e) => {
+        e.preventDefault();
+        render(location.pathname); // this will work only with http protocol
+      });
+    </script>
+  </body>
+</html>
