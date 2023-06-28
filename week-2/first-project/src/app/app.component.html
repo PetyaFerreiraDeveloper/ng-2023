@@ -1,3 +1,6 @@
-<p id="title">App works</p>
+<p id="title">{{title}}</p>
+
+<input #titleInput type="text">
+<button (click)="changeTitleHandler(titleInput.value)">Change title</button>
 
 <app-list></app-list>
