@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ICustomEvent } from '../list-item/list-item.component';
+import { IUser } from '../interfaces';
 
 @Component({
   selector: 'app-list',
@@ -6,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent {
-  users = [
+  users: IUser[] = [
     {
       firstName: 'Ivan',
       lastName: 'Ivanov',
@@ -17,9 +19,30 @@ export class ListComponent {
     },
   ];
 
+  selectedUserIndex: null | number = null;
+
   showLastName = true;
+
+  get showSelectedIndex(): boolean {
+    return (this.selectedUserIndex === null ? -1 : this.selectedUserIndex) >= 0;
+  }
+
   constructor() {}
+
   handleClickEvent(event: MouseEvent) {
     this.showLastName = !this.showLastName;
   }
+
+  listItemCLickHandler(index: number) {
+    if (this.selectedUserIndex === index) {
+      this.selectedUserIndex = null;
+      return;
+    }
+    this.selectedUserIndex = index;
+  }
+  customEventHandler($event: ICustomEvent) {
+    console.log($event);
+    
+  }
+
 }
