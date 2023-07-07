@@ -1,4 +1,5 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
+import { MyClass } from './app.module';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,9 @@ export class AppComponent {
     },
   ];
 
-  constructor() {}
+  constructor(test: MyClass) {
+    console.log(test);
+  }
 
   addUserHandler(nameInput: HTMLInputElement): void {
     const { value: name } = nameInput;
