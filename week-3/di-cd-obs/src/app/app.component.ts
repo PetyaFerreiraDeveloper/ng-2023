@@ -7,22 +7,22 @@ import { MyClass } from './app.module';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  users = [
-    {
-      name: 'Ivan',
-    },
-    {
-      name: 'Pesho',
-    },
-  ];
+  // users = [
+  //   {
+  //     name: 'Ivan',
+  //   },
+  //   {
+  //     name: 'Pesho',
+  //   },
+  // ];
 
-  constructor(test: MyClass) {
-    console.log(test);
-  }
+  // constructor(test: MyClass) {
+  //   console.log(test);
+  // }
 
-  addUserHandler(nameInput: HTMLInputElement): void {
-    const { value: name } = nameInput;
-    this.users.push({ name });
-    nameInput.value = '';
-  }
+  // addUserHandler(nameInput: HTMLInputElement): void {
+  //   const { value: name } = nameInput;
+  //   this.users.push({ name });
+  //   nameInput.value = '';
+  // }
 }
