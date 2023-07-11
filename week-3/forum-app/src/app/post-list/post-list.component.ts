@@ -9,6 +9,7 @@ import { IPost } from '../interfaces/post';
 })
 export class PostListComponent implements OnInit {
   posts: IPost[] | null = null;
+  errorFetchingData = false;
 
   constructor(private apiService: ApiService) {}
 
@@ -19,6 +20,7 @@ export class PostListComponent implements OnInit {
         console.log('posts', value);
       },
       error: (err) => {
+        this.errorFetchingData = true
         console.error(err);
       },
     });
