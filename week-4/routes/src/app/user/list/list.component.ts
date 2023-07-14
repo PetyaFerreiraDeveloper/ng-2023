@@ -8,7 +8,7 @@ import { IUser } from 'src/app/shared/interfaces';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss'],
 })
-export class ListComponent implements OnInit {
+export class UserListComponent implements OnInit {
   userList: IUser[] | null = null;
   constructor(
     private userService: UserService,
@@ -32,4 +32,9 @@ export class ListComponent implements OnInit {
   reloadUsersHandler(): void {
     this.loadUsers();
   }
-}
+
+  onUserClickHandler(user:IUser): void {
+    console.log('clicked', user.username);
+    
+  }
+ }
