@@ -14,11 +14,8 @@ export class LoginComponent {
   }
 
   constructor(private router: Router, private authService: AuthService) {
-    // this.authService.user = Misho;
-    this.isLoggedIn
-      ? this.router.navigate(['/'])
-      : this.router.navigate(['/auth/login']);
-
-    // this.router.navigate(['/']);
+    this.authService.user = Misho;
+  
+    this.router.navigate(['/']);
   }
 }

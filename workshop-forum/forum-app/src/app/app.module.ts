@@ -21,8 +21,8 @@ import { ThemeModule } from './theme/theme.module';
     BrowserModule,
     AuthModule,
     ThemeModule,
-    AppRoutingModule,
     CoreModule,
+    AppRoutingModule,
     HttpClientModule,
     SharedModule,
     ThemeModule
