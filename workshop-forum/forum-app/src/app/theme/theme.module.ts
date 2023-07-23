@@ -4,13 +4,15 @@ import { ThemeListComponent } from './theme-list/theme-list.component';
 import { SharedModule } from '../shared/shared.module';
 import { ThemeRoutingModule } from './theme-routing.module';
 import { NewThemeComponent } from './new-theme/new-theme.component';
+import { ThemeDetailComponent } from './theme-detail/theme-detail.component';
 
 
 
 @NgModule({
   declarations: [
     ThemeListComponent,
-    NewThemeComponent
+    NewThemeComponent,
+    ThemeDetailComponent
   ],
   imports: [
     CommonModule,
