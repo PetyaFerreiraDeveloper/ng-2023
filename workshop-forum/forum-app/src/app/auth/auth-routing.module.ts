@@ -8,18 +8,30 @@ const routes: Routes = [
   {
     path: 'auth/login',
     component: LoginComponent,
+    data: {
+      title: 'Login'
+    }
   },
   {
     path: 'auth/register',
     component: RegisterComponent,
+    data: {
+      title: 'Register'
+    }
   },
   {
     path: 'auth/logout',
     component: LogoutComponent,
+    data: {
+      title: 'Logout'
+    }
   },
   {
     path: 'auth/profile',
     component: ProfileComponent,
+    data: {
+      title: 'Profile'
+    }
   },
 ];
 
