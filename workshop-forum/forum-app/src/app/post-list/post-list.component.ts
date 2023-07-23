@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
-import { IPost } from '../interfaces/post';
+import { IPost } from '../shared/interfaces/post';
 
 @Component({
   selector: 'app-post-list',
@@ -20,7 +20,7 @@ export class PostListComponent implements OnInit {
         console.log('posts', value);
       },
       error: (err) => {
-        this.errorFetchingData = true
+        this.errorFetchingData = true;
         console.error(err);
       },
     });
