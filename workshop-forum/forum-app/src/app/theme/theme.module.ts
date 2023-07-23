@@ -5,6 +5,8 @@ import { SharedModule } from '../shared/shared.module';
 import { ThemeRoutingModule } from './theme-routing.module';
 import { NewThemeComponent } from './new-theme/new-theme.component';
 import { ThemeDetailComponent } from './theme-detail/theme-detail.component';
+import { PostListComponent } from './post-list/post-list.component';
+import { MainComponent } from './main/main.component';
 
 
 
@@ -12,7 +14,9 @@ import { ThemeDetailComponent } from './theme-detail/theme-detail.component';
   declarations: [
     ThemeListComponent,
     NewThemeComponent,
-    ThemeDetailComponent
+    ThemeDetailComponent, 
+    PostListComponent,
+    MainComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +24,8 @@ import { ThemeDetailComponent } from './theme-detail/theme-detail.component';
     ThemeRoutingModule
   ], 
   exports: [
-    ThemeListComponent
+    ThemeListComponent,
+    PostListComponent,
   ]
 })
 export class ThemeModule { }
