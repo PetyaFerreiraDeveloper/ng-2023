@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-theme-detail',
@@ -6,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./theme-detail.component.scss']
 })
 export class ThemeDetailComponent {
-
+constructor(private activatedRoute:ActivatedRoute){
+  console.log(this.activatedRoute.snapshot.data?.['theme']);
+  
+}
 }

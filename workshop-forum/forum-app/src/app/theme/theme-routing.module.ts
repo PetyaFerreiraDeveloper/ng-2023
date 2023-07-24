@@ -2,6 +2,9 @@ import { RouterModule, Routes } from "@angular/router";
 import { NewThemeComponent } from "./new-theme/new-theme.component";
 import { ThemeDetailComponent } from "./theme-detail/theme-detail.component";
 import { MainComponent } from "./main/main.component";
+import { ApiService } from "../api.service";
+import { inject } from "@angular/core";
+import { ThemeResolver } from "./resolvers/theme.resolver";
 
 const routes: Routes = [
     {
@@ -17,6 +20,9 @@ const routes: Routes = [
             },
             {
                 path: 'detail/:id',
+                resolve: {
+                    theme: ThemeResolver
+                },
                 component: ThemeDetailComponent
             }
         ]
