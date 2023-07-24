@@ -11,15 +11,21 @@ import { filter, map, tap } from 'rxjs';
 export class AppComponent {
   title = 'forum-app';
 
+  showMyClass = false;
+
   constructor(private router: Router, private pageTitle: Title) {
     this.router.events
       .pipe(
         filter((e): e is ActivationStart => e instanceof ActivationStart),
         map((e) => e.snapshot.data?.['title']),
-        filter(d => !!d)
+        filter((d) => !!d)
       )
       .subscribe((pageTitle) => {
-        this.pageTitle.setTitle(pageTitle)
+        this.pageTitle.setTitle(pageTitle);
       });
+  }
+
+  toggleMyClass() {
+    this.showMyClass = !this.showMyClass;
   }
 }
