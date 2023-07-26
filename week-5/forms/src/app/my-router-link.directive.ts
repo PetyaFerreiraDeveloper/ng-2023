@@ -1,6 +1,7 @@
 import {
   Directive,
   ElementRef,
+  HostListener,
   Input,
   OnDestroy,
   OnInit,
@@ -15,6 +16,14 @@ import {
 export class MyRouterLinkDirective implements OnInit, OnDestroy {
   @Input() appMyRouterLink!: string;
   @Input() template!: TemplateRef<any>;
+
+  @HostListener('mouseenter', ['$event']) mouseEnterHandler(e: MouseEvent) {
+    console.log('mouse entered', e);
+  }
+
+  @HostListener('mouseleave') mouseLeaveHandler2(e: MouseEvent) {
+    console.log('mouse left', e); // the event will be undefined, because we need to provide an argumen $event inside the HostListener
+  }
 
   unsubs: (() => void)[] = [];
 
@@ -60,9 +69,8 @@ export class MyRouterLinkDirective implements OnInit, OnDestroy {
 
   mouseLeaveHandler = (e: MouseEvent) => {
     this.renderer.setStyle(this.elementRef.nativeElement, 'color', 'initial');
-    this.vc.clear()
+    this.vc.clear();
     this.viewHasBeenCreated = false;
-
   };
 
   ngOnDestroy(): void {
