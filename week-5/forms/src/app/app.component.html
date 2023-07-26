@@ -2,3 +2,11 @@
 <ng-template #myTemplate>Hello Again</ng-template>
 
 <div appMyRouterLink="path/to/something" [template]="myTemplate">Hello world</div>
+
+
+<!-- The star * is syntax sugar on the syntax below -->
+<div *ngIf="true">123</div>
+
+<ng-template [ngIf]="true">
+    <div>123</div>
+</ng-template>
