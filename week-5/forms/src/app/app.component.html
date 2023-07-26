@@ -1,12 +1,28 @@
-
 <ng-template #myTemplate>Hello Again</ng-template>
 
-<div appMyRouterLink="path/to/something" [template]="myTemplate">Hello world</div>
-
+<div appMyRouterLink="path/to/something" [template]="myTemplate">
+  Hello world
+</div>
 
 <!-- The star * is syntax sugar on the syntax below -->
 <div *ngIf="true">123</div>
 
 <ng-template [ngIf]="true">
-    <div>123</div>
+  <div>123</div>
 </ng-template>
+
+<button (click)="myIfValue = !myIfValue">Toggle my if Value</button>
+
+<div *appMyIf="myIfValue">My If with syntax sugar is working</div>
+
+<ng-template [appMyIf]="myIfValue">
+  <div>My If with sugar is working with another syntax</div>
+</ng-template>
+
+<ng-template #tmp let-value="value" let-valuee>
+  This is a third syntax to test that My If directive works
+  {{value}} --- {{valuee}}
+
+</ng-template>
+
+<ng-container [appMyIf]="myIfValue" [template]="tmp"></ng-container>
