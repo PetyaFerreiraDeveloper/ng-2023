@@ -9,7 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { DirectivesComponent } from './directives/directives.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaxCountDirective } from './max-count.directive';
 
 @NgModule({
@@ -26,7 +26,8 @@ import { MaxCountDirective } from './max-count.directive';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, // for templates driven component
+    FormsModule, // for templates driven forms
+    ReactiveFormsModule, // for in class forms that we have to bind in the template
   ],
   providers: [],
   bootstrap: [AppComponent]

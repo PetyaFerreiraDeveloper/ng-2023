@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -6,11 +6,11 @@ import { NgForm } from '@angular/forms';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements AfterViewInit {
-  @ViewChild('loginForm') loginForm!: NgForm;
+export class LoginComponent implements OnInit {
+  @ViewChild('loginForm', { static: true }) loginForm!: NgForm;
 
-  ngAfterViewInit() {
-    console.dir(this.loginForm);
+  ngOnInit(): void {
+    // this.loginForm?.valueChanges?.subscribe(console.log);
   }
 
   handleFormSubmit(form: NgForm): void {
@@ -19,6 +19,6 @@ export class LoginComponent implements AfterViewInit {
 
     console.log(value);
     // form.setValue({ email: '', password: '' });
-    form.reset()
+    form.reset();
   }
 }
