@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 export interface IRegisterForm {
   username: string;
   email: string;
-  tel: number;
+  countryCode: string;
+  tel: string;
+  occupation: string;
   password: string;
-  rePassword:string;
+  rePassword: string;
 }
 
 @Component({
@@ -14,7 +17,11 @@ export interface IRegisterForm {
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
-  handleFormSubmit(value: IRegisterForm): void {
-    console.log(value)
+  handleFormSubmit(form: NgForm): void {
+
+    if(form.invalid) {return}
+    const value: IRegisterForm = form.value;
+    console.log(value);
+    form.resetForm()
   }
 }

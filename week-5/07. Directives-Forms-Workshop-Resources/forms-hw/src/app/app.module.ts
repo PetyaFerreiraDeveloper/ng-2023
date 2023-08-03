@@ -7,18 +7,20 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
+import { FullNameDirective } from './full-name.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FullNameDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule // used for template driven forms
+    FormsModule // used for template driven kjforms
   ],
   providers: [],
   bootstrap: [AppComponent]
