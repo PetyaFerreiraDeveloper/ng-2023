@@ -7,27 +7,23 @@ import {
 } from '@angular/forms';
 
 @Directive({
-  selector: '[appFullName]',
+  selector: '[appRePassValidation]',
   providers: [
     {
       provide: NG_VALIDATORS,
-      useExisting: FullNameDirective,
+      useExisting: RePassValidationDirective,
       multi: true,
     },
   ],
 })
-export class FullNameDirective implements Validator {
+export class RePassValidationDirective implements Validator {
   constructor() {}
   validate(control: AbstractControl<any, any>): ValidationErrors | null {
-    const regex = /^[A-Z][a-z]+\s[A-Z][a-z]+/gm;
-
-    let inputFieldValue = control.value;
-
-    if (inputFieldValue == '' || regex.test(inputFieldValue)) return null;
+    const passwordValue = control['_parent'].value['password'];
+    if (control.value == '' || control.value == passwordValue) return null;
 
     return {
-      appFullName:
-        'Please fill first and last names starting with capital letters',
+      appRePassValidation: 'Password and Re-Password must match',
     };
   }
   // registerOnValidatorChange?(fn: () => void): void {

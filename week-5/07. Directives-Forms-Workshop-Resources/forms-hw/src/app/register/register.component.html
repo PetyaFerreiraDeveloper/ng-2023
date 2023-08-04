@@ -64,11 +64,19 @@
           type="text"
           name="tel"
           id="tel"
-          placeholder="888 888"
+          placeholder="888 888 888"
           autocomplete="mobile"
+          #phoneInput="ngModel"
           ngModel
+          appPhoneValidation
         />
       </p>
+
+      <ng-container *ngIf="phoneInput.touched">
+        <p class="error" *ngIf="phoneInput.errors?.['appPhoneValidation']">
+          {{phoneInput.errors?.['appPhoneValidation']}}
+        </p>
+      </ng-container>
 
       <p class="field field-icon">
         <label for="occupation">
@@ -92,22 +100,39 @@
           id="password"
           placeholder="******"
           autocomplete="new-password"
+          #passwordInput="ngModel"
           ngModel
+          appPasswordValidation
         />
       </p>
+
+      <ng-container *ngIf="passwordInput.touched">
+        <p class="error" *ngIf="passwordInput.errors?.['appPasswordValidation']">
+          {{passwordInput.errors?.['appPasswordValidation']}}
+        </p>
+      
+      </ng-container>
 
       <p class="field field-icon">
         <label for="re-password">
           <span><i class="fas fa-lock"></i></span>
         </label>
         <input
-          type="re-password"
+          type="password"
           name="re-password"
           id="re-password"
           placeholder="******"
+          #rePassInput="ngModel"
           ngModel
+          appRePassValidation
         />
       </p>
+
+      <ng-container *ngIf="rePassInput.touched">
+        <p class="error" *ngIf="rePassInput.errors?.['appRePassValidation']" >
+          {{rePassInput.errors?.['appRePassValidation']}}
+        </p>
+      </ng-container>
 
       <p>
         <button>Create Account</button>

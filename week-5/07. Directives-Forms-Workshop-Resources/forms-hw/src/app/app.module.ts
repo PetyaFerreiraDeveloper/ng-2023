@@ -8,6 +8,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { FormsModule } from '@angular/forms';
 import { FullNameDirective } from './full-name.directive';
+import { PhoneValidationDirective } from './phone-validation.directive';
+import { PasswordValidationDirective } from './password-validation.directive';
+import { RePassValidationDirective } from './re-pass-validation.directive';
 
 @NgModule({
   declarations: [
@@ -16,6 +19,9 @@ import { FullNameDirective } from './full-name.directive';
     LoginComponent,
     RegisterComponent,
     FullNameDirective,
+    PhoneValidationDirective,
+    PasswordValidationDirective,
+    RePassValidationDirective,
   ],
   imports: [
     BrowserModule,

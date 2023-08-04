@@ -7,27 +7,22 @@ import {
 } from '@angular/forms';
 
 @Directive({
-  selector: '[appFullName]',
+  selector: '[appPhoneValidation]',
   providers: [
     {
       provide: NG_VALIDATORS,
-      useExisting: FullNameDirective,
+      useExisting: PhoneValidationDirective,
       multi: true,
     },
   ],
 })
-export class FullNameDirective implements Validator {
+export class PhoneValidationDirective implements Validator {
   constructor() {}
   validate(control: AbstractControl<any, any>): ValidationErrors | null {
-    const regex = /^[A-Z][a-z]+\s[A-Z][a-z]+/gm;
-
-    let inputFieldValue = control.value;
-
-    if (inputFieldValue == '' || regex.test(inputFieldValue)) return null;
-
+    const regex = /^\d{9}$/gm;
+    if (control.value == '' || regex.test(control.value)) return null;
     return {
-      appFullName:
-        'Please fill first and last names starting with capital letters',
+      appPhoneValidation: 'Phone number must contain nine digits',
     };
   }
   // registerOnValidatorChange?(fn: () => void): void {
