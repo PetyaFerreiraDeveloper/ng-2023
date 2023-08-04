@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FullNameDirective } from './full-name.directive';
 import { PhoneValidationDirective } from './phone-validation.directive';
 import { PasswordValidationDirective } from './password-validation.directive';
@@ -26,7 +26,8 @@ import { RePassValidationDirective } from './re-pass-validation.directive';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule // used for template driven kjforms
+    FormsModule, // used for template driven forms
+    ReactiveFormsModule, // used for reactive forms - in class forms that we have to bind in the template
   ],
   providers: [],
   bootstrap: [AppComponent]
