@@ -122,13 +122,14 @@
           name="re-password"
           id="re-password"
           placeholder="******"
+          autocomplete="new-password"
           #rePassInput="ngModel"
           ngModel
           appRePassValidation
         />
       </p>
 
-      <ng-container *ngIf="rePassInput.touched">
+      <ng-container *ngIf="rePassInput.touched || rePassInput.invalid">
         <p class="error" *ngIf="rePassInput.errors?.['appRePassValidation']" >
           {{rePassInput.errors?.['appRePassValidation']}}
         </p>
