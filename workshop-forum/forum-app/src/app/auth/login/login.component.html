@@ -16,14 +16,16 @@
         ngModel
         #emailInput="ngModel"
         required
-        email
+        [appEmail]="['bg', 'com']"
       />
     </p>
     <!-- {{emailInput.errors | json}} -->
     <ng-container *ngIf="emailInput.touched">
       <p class="error" *ngIf="emailInput.errors?.['required']">Email is required!</p>
-      <p class="error" *ngIf="emailInput.errors?.['email']">Email is not valid!</p>
+      <p class="error" *ngIf="emailInput.errors?.['appEmailValidator']">Email is not valid!</p>
     </ng-container>
+
+    <!-- <input type="file" #files> -->
 
     <p class="field field-icon">
       <label for="password">
