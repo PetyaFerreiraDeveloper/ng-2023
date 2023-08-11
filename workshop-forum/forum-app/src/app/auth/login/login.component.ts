@@ -23,11 +23,14 @@ export class LoginComponent {
   ) {}
 
   loginHandler(loginForm: NgForm): void {
+    if(loginForm.invalid) return
+    console.log(loginForm);
+    
     // console.log(this.files.nativeElement.files);
-    // this.authService.user = Misho;
+    this.authService.user = Misho;
 
-    // const returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/'
+    const returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/'
 
-    // this.router.navigate([returnUrl]);
+    this.router.navigate([returnUrl]);
   }
 }

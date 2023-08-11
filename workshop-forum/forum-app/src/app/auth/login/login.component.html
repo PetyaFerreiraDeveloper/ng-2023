@@ -7,7 +7,6 @@
         <span><i class="fas fa-envelope"></i></span>
       </label>
       <input
-        class="input-error"
         type="email"
         name="email"
         id="email"
@@ -40,15 +39,15 @@
         ngModel
         #passwordInput="ngModel"
         required
-        minlength="4"
+        minlength="5"
       />
     </p>
     <ng-container *ngIf="passwordInput.touched">
       <p class="error" *ngIf="passwordInput.errors?.['required']">Password is required!</p>
-      <p class="error" *ngIf="passwordInput.errors?.['minlength']">Password must be at least 4 characters!</p>
+      <p class="error" *ngIf="passwordInput.errors?.['minlength']">Password must be at least 5 characters!</p>
     </ng-container>
 
-    <button>Login</button>
+    <button [disabled]="loginForm.invalid">Login</button>
 
     <p class="text-center">
       Have an account?

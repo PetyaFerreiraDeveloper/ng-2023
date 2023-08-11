@@ -90,6 +90,11 @@ p.error {
   padding-top: 0;
 }
 
-.input-error {
+input.ng-touched.ng-invalid {
   border-left-color: red;
 }
+
+button.disabled {
+  background-color: red;
+}
+
