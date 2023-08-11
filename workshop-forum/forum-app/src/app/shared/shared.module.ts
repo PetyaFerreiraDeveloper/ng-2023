@@ -4,6 +4,7 @@ import { LoaderComponent } from './loader/loader.component';
 import { WelcomeMessageComponent } from './welcome-message/welcome-message.component';
 import { RouterModule } from '@angular/router';
 import { AppEmailDirective } from './validators/app-email.directive';
+import { MatchPasswordDirective } from './validators/match-password.directive';
 
 
 
@@ -12,7 +13,7 @@ import { AppEmailDirective } from './validators/app-email.directive';
     LoaderComponent,
     WelcomeMessageComponent,
     AppEmailDirective,
-
+    MatchPasswordDirective
   ],
   imports: [
     CommonModule,
