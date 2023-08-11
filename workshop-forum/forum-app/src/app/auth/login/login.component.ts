@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { Misho } from 'src/app/shared/consts/user';
 import { NgForm } from '@angular/forms';
+import { appEmailDomains } from 'src/app/shared/constants';
 
 @Component({
   selector: 'app-login',
@@ -10,6 +11,8 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+
+  appEmailDomains = appEmailDomains
   // @ViewChild('files', { static: true }) files!: ElementRef<HTMLInputElement>;
 
   get isLoggedIn() {
