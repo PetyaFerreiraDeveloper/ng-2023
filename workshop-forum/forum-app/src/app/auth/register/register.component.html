@@ -1,4 +1,4 @@
-<form class="register" [formGroup]="form">
+<form class="register" [formGroup]="form" (ngSubmit)="registerHandler()">
   <fieldset>
     <h2>Registration Form</h2>
 
@@ -40,7 +40,9 @@
       <p class="error" *ngIf="form.get('email')?.errors?.['required']">
         Email is required!
       </p>
-      <p class="error" *ngIf="form.get('email')?.errors?.['appEmailValidator']" >Email is not valid!</p>
+      <p class="error" *ngIf="form.get('email')?.errors?.['appEmailValidator']">
+        Email is not valid!
+      </p>
     </ng-container>
 
     <!-- telephone -->
@@ -48,7 +50,9 @@
       <label for="tel">
         <span><i class="fas fa-phone"></i></span>
       </label>
-      <select formControlName="code" id="selectTel" class="tel">
+
+      <!-- specifying ngModel=00359 provides default option for the select-->
+      <select formControlName="code" ngModel="00359" id="selectTel" class="tel">
         <option value="00359">+359</option>
         <option value="0045">+45</option>
       </select>
@@ -109,7 +113,7 @@
       </p>
     </ng-container>
     <!-- {{ form.value | json }} -->
-    <button disabled>Create Account</button>
+    <button [disabled]="form.invalid">Create Account</button>
 
     <p class="text-center">
       Have an account?
