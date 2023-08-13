@@ -84,3 +84,8 @@ p.error {
 .input-error {
   border-left-color: red;
 }
+
+button:disabled {
+  background-color: #83d3f5;
+  cursor: not-allowed;
+}

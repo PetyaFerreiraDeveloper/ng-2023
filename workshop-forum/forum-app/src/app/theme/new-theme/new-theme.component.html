@@ -58,7 +58,7 @@
       <button class="cancel" type="button" routerLink="/theme/recent">
         Cancel
       </button>
-      <button class="public">Post</button>
+      <button class="public" [disabled]="form.invalid">Post</button>
     </div>
   </form>
 </div>
