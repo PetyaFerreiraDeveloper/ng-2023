@@ -34,7 +34,6 @@
 }
 
 .flex p:last-child {
-  width: 55%;
   text-align: left;
   margin: 0.5em;
   font-weight: bold;
@@ -57,10 +56,12 @@
 
 .flex > div > input {
   width: 77%;
+  padding: 4px 0;
 }
 
 .flex select {
   padding: 0.17em 0;
+  margin-right: 4px;
 }
 
 .red-button {
@@ -69,4 +70,14 @@
 
 .green-button {
   background-color: green;
+}
+
+.phone {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.phone-input {
+  padding: 1px;
 }

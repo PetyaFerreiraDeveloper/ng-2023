@@ -1,23 +1,52 @@
 <div class="profile">
-    <form >
-        <img src="/assets/profile.png" alt="default user">
-        <h3>User Info:</h3>
-        <div class="flex">
-            <p>Username: </p>
-            <p>{{user.username}}</p>
-        </div>
-        <div class="flex">
-            <p>Email: </p>
-            <p>{{user.email}}</p>
-        </div>
-        <div class="flex">
-            <p>Phone: </p>
-            <p>{{user.code}} {{user.tel}}</p>
-        </div>
-        <button class="edit-button" (click)="toggleEditMode()" >
-            <ng-container *ngIf="showEditMode">Save</ng-container>
-            <ng-container *ngIf="!showEditMode">Edit</ng-container>
-        </button>
-    </form>
+  <form [formGroup]="form" (ngSubmit)="saveProfile()">
+    <img src="/assets/profile.png" alt="default user" />
+    <h3>User Info:</h3>
+    <div class="flex">
+      <p>Username:</p>
+      <p class="input">
+        <input *ngIf="showEditMode" type="text" formControlName="username" />
+        <ng-container *ngIf="!showEditMode">
+          {{ user.username }}
+        </ng-container>
+      </p>
+    </div>
+    <div class="flex">
+      <p>Email:</p>
+      <p>
+        <input *ngIf="showEditMode" type="text" formControlName="email" />
+        <ng-container *ngIf="!showEditMode">
+          {{ user.email }}
+        </ng-container>
+      </p>
+    </div>
+    <div class="flex">
+      <p>Phone:</p>
+      <p>
+        <ng-container *ngIf="showEditMode" class="phone">
+          <select formControlName="code" ngModel="00359">
+            <option value="00359">+359</option>
+            <option value="0045">+45</option>
+          </select>
+          <input
+            type="text"
+            formControlName="tel"
+            placeholder="888 888 888"
+            class="phone-input"
+          />
+        </ng-container>
+        <ng-container *ngIf="!showEditMode">
+          {{ user.code }} {{ user.tel }}
+        </ng-container>
+      </p>
+    </div>
+    <ng-template #edit>
+      <button class="edit-button" type="submit">Save</button>
+    </ng-template>
+    <ng-template #nonEdit>
+      <button class="edit-button" type="button" (click)="toggleEditMode()">Edit</button>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="showEditMode ? edit : nonEdit"></ng-container>
   
+  </form>
 </div>

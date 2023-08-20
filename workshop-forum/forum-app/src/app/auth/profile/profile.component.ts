@@ -14,7 +14,7 @@ export class ProfileComponent {
   showEditMode = false;
 
   get user() {
-    const { username, email, tel: telephone } = this.authService.user!;
+    const { username, email, tel: telephone} = this.authService.user!;
     const [code, ...tel] = telephone.split(' ');
     return {
       username,
@@ -31,11 +31,19 @@ export class ProfileComponent {
     code: [''],
   });
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {}
+  constructor(private fb: FormBuilder, private authService: AuthService) {
+    this.form.setValue(this.user);
+  }
 
-  toggleEditMode(): void{ 
-    this.showEditMode = !this.showEditMode
-    console.log(this.showEditMode);
-    
-  } 
+  toggleEditMode(): void {
+    this.showEditMode = !this.showEditMode;
+  }
+
+  saveProfile(): void {
+    if (this.form.invalid) return;
+    const { username, email, code, tel } = this.form.value;
+    this.authService.user = { username, email, tel: code + ' ' + tel } as any;
+    this.toggleEditMode();
+    console.log(this.form.value);
+  }
 }
