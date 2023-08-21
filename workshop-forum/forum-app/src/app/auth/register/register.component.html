@@ -15,13 +15,12 @@
         placeholder="Johny"
       />
     </p>
-
-    <p
-      class="error"
-      *ngIf="form.get('username')?.errors?.['required'] && form.get('username')?.touched"
-    >
-      Username is required!
-    </p>
+    <ng-container *ngIf="form.get('username')?.touched">
+      <p class="error" *ngIf="form.get('username')?.errors?.['required']">
+        Username is required!
+      </p>
+      <p class="error" *ngIf="form.get('username')?.errors?.['minlength']">Username must have minimum {{form.get('username')?.errors?.['minLength']?.['requiredLength']}} characters</p>
+    </ng-container>
 
     <!-- email -->
     <p class="field field-icon">

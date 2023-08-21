@@ -12,6 +12,7 @@ import { IUser } from 'src/app/shared/interfaces';
 })
 export class ProfileComponent {
   showEditMode = false;
+  formSubmitted = false;
 
   get user() {
     const { username, email, tel: telephone} = this.authService.user!;
@@ -37,9 +38,13 @@ export class ProfileComponent {
 
   toggleEditMode(): void {
     this.showEditMode = !this.showEditMode;
+    if(this.showEditMode) {
+      this.formSubmitted = false
+    }
   }
 
   saveProfile(): void {
+    this.formSubmitted = true;
     if (this.form.invalid) return;
     const { username, email, code, tel } = this.form.value;
     this.authService.user = { username, email, tel: code + ' ' + tel } as any;
