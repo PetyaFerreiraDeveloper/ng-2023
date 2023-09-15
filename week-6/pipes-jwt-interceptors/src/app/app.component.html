@@ -1,0 +1,32 @@
+<h2>{{ myPromise | async }}</h2>
+
+<p>Current time</p>
+
+<p>{{ $time | async | date : "HH:mm:ss" }}</p>
+
+{{ obj.prop1 | uppercase }}
+
+<p>
+  {{ getObj(obj, "prop1") }}
+</p>
+
+<p>
+  {{ calcScores(scoresObj) }}
+</p>
+
+<h3>this is the reducer without initial value</h3>
+<p>
+  {{ scoresObj.scores | reduce : add }}
+</p>
+<h3>this is the reducer with initial value</h3>
+<p>
+  {{ scoresObj.scores | reduce : add : 1000 }}
+</p>
+
+<button (click)="addProp()">Test</button>
+
+<p>Shorten the sentence 'Hello from the other side' using the shorten pipe</p>
+
+<p>
+  {{ sentence | shorten : 10 }}
+</p>
