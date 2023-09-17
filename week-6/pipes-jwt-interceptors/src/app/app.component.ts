@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { interval, map, startWith } from 'rxjs';
 import { UserService } from './user.service';
 
@@ -11,7 +11,7 @@ function add(a: number | string, b: number | string) {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   obj = {
     prop1: 'Hello World',
   };
@@ -43,6 +43,9 @@ export class AppComponent implements OnInit {
     }, 5000);
   });
 
+  user$ = this.userService.user$;
+  isLoadingUsers$ = this.userService.isLoading$;
+
   constructor(private userService: UserService) {}
 
   calcScores(obj: { scores: number[] }) {
@@ -59,10 +62,14 @@ export class AppComponent implements OnInit {
     this.scoresObj.scores = this.scoresObj.scores.concat(100);
   }
 
-  ngOnInit(): void {
-    this.userService.getUsers().subscribe({
-      next: (users) => console.log(users),
-      error: (err) => console.error(err),
-    });
+  reloadUsers(): void {
+    this.userService.loadUsers();
   }
+
+  // ngOnInit(): void {
+  //   this.userService.getUsers().subscribe({
+  //     next: (users) => console.log(users),
+  //     error: (err) => console.error(err),
+  //   });
+  // }
 }

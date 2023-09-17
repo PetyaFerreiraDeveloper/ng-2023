@@ -6,8 +6,17 @@
 </nav>
 <router-outlet></router-outlet>
 
+<div *ngIf="isLoadingUsers$ | async">Loading...</div>
+<div *ngIf="!(isLoadingUsers$ | async)">{{ user$ | async | json }}</div>
 
-<p>Current time: </p>
+<button *ngIf="(user$ | async) === null" (click)="reloadUsers()">
+  Load Users
+</button>
+<button *ngIf="(user$ | async) !== null" (click)="reloadUsers()">
+  Reload Users
+</button>
+
+<p>Current time:</p>
 
 <p>{{ $time | async | date : "HH:mm:ss" }}</p>
 
@@ -37,4 +46,3 @@
 <p>
   {{ sentence | shorten : 10 }}
 </p>
-
