@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { interval, map } from 'rxjs';
+import { interval, map, startWith } from 'rxjs';
 import { UserService } from './user.service';
 
 function add(a: number | string, b: number | string) {
@@ -21,7 +21,10 @@ export class AppComponent implements OnInit {
 
   // create a clock
 
-  $time = interval(1000).pipe(map(() => new Date()));
+  $time = interval(1000).pipe(
+    startWith(null),
+    map(() => new Date())
+  );
 
   getObj(obj: any, propName: string) {
     return obj[propName];

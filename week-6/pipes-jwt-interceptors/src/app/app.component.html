@@ -1,6 +1,13 @@
 <h2>{{ myPromise | async }}</h2>
 
-<p>Current time</p>
+<nav class="nav">
+  <a routerLink="/">Home</a>
+  <a routerLink="/lazy">Lazy</a>
+</nav>
+<router-outlet></router-outlet>
+
+
+<p>Current time: </p>
 
 <p>{{ $time | async | date : "HH:mm:ss" }}</p>
 
@@ -30,3 +37,4 @@
 <p>
   {{ sentence | shorten : 10 }}
 </p>
+

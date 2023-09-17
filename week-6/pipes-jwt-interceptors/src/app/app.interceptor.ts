@@ -9,8 +9,7 @@ import {
 } from '@angular/common/http';
 import { Observable, catchError, tap } from 'rxjs';
 
-import { environment } from 'src/environments/environment';
-const apiURL = environment.apiURL;
+import {environment} from 'src/environments/environment.development';
 
 @Injectable()
 export class AppInterceptor implements HttpInterceptor {
@@ -18,6 +17,8 @@ export class AppInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+
+    const apiURL = environment.apiURL;
     let request = req;
 
     if (req.url.startsWith('/api')) {
