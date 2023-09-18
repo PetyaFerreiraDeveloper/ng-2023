@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { catchError, map, of } from 'rxjs';
 import { appEmailDomains } from 'src/app/shared/constants';
 import {
   appEmailValidator,
   sameValueGroupValidator,
 } from 'src/app/shared/validators';
+import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -29,25 +30,29 @@ export class RegisterComponent {
     ),
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   registerHandler() {
     if (this.form.invalid) return;
-    console.log(this.form.value);
+    const {
+      username,
+      email,
+      pass: { password, rePassword } = {},
+      tel,
+    } = this.form.value;
 
-    this.form.reset();
+    this.authService
+      .register(username!, email!, password!, rePassword!, tel || undefined)
+      .subscribe((user) => {
+        // this.authService.user = user;
+        // this.router.navigate(['/theme/recent'])
+        this.router.navigate(['/auth/login']);
+      });
+
+    // this.form.reset();
   }
 }
-
-// of(1).pipe(
-//   map(() => {
-//     throw new Error('BAD ERROR')
-//   }),
-//   catchError(error => {
-//     console.log(error)
-//     return [1000]
-//   })
-// ).subscribe({
-//   next: (value) => {console.log(value)},
-//   error: (error) => console.log(error)
-// })

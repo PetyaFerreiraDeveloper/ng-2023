@@ -8,20 +8,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { ThemeModule } from './theme/theme.module';
+import { AppInterceptorProvider } from './app.interceptor';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
     AuthModule,
+    BrowserModule,
     ThemeModule,
-    CoreModule,
     AppRoutingModule,
+    CoreModule,
     HttpClientModule,
     SharedModule,
     ThemeModule,
   ],
-  providers: [],
+  providers: [AppInterceptorProvider],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

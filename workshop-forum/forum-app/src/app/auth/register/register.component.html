@@ -13,6 +13,7 @@
         formControlName="username"
         id="username"
         placeholder="Johny"
+        autocomplete="username"
       />
     </p>
     <ng-container *ngIf="form.get('username')?.touched">
@@ -60,6 +61,7 @@
         formControlName="tel"
         id="tel"
         placeholder="885 888 888"
+        autocomplete="tel"
       />
     </p>
 
@@ -74,6 +76,7 @@
           formControlName="password"
           id="password"
           placeholder="******"
+          autocomplete="new-password"
         />
       </p>
 
@@ -102,6 +105,7 @@
           formControlName="rePassword"
           id="rePassword"
           placeholder="******"
+          autocomplete="new-password"
         />
       </p>
       <p
