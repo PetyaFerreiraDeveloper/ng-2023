@@ -48,10 +48,9 @@ export class RegisterComponent {
     this.authService
       .register(username!, email!, password!, rePassword!, tel || undefined)
       .subscribe((user) => {
-        
-        this.authService.user = user;
-        this.router.navigate(['/theme/recent'])
-        // this.router.navigate(['/auth/login']);
+        // we can delete this line because of the subscription thing we did in authservice
+        // this.authService.user = user;
+        this.router.navigate(['/theme/recent']);
       });
 
     // this.form.reset();

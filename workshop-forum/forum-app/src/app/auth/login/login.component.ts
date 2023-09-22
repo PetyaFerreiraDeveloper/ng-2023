@@ -28,7 +28,8 @@ export class LoginComponent {
     if (loginForm.invalid) return;
     const { email, password } = loginForm.value;
     this.authService.login(email, password).subscribe((user) => {
-      this.authService.user = user;
+      // we can delete this line because of the subscription thing we did in authservice
+      // this.authService.user = user;
       this.router.navigate(['theme/recent']);
     });
     console.log(loginForm);
