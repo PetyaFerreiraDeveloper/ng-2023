@@ -11,8 +11,7 @@ import { appEmailDomains } from 'src/app/shared/constants';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-
-  appEmailDomains = appEmailDomains
+  appEmailDomains = appEmailDomains;
   // @ViewChild('files', { static: true }) files!: ElementRef<HTMLInputElement>;
 
   get isLoggedIn() {
@@ -26,14 +25,18 @@ export class LoginComponent {
   ) {}
 
   loginHandler(loginForm: NgForm): void {
-    if(loginForm.invalid) return
+    if (loginForm.invalid) return;
+    const { email, password } = loginForm.value;
+    this.authService.login(email, password).subscribe((user) => {
+      this.authService.user = user;
+      this.router.navigate(['theme/recent']);
+    });
     console.log(loginForm);
-    
+
     // console.log(this.files.nativeElement.files);
-    this.authService.user = Misho;
 
-    const returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/'
+    // const returnUrl = this.activatedRoute.snapshot.queryParams['returnUrl'] || '/'
 
-    this.router.navigate([returnUrl]);
+    // this.router.navigate([returnUrl]);
   }
 }

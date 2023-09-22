@@ -43,9 +43,9 @@ export class AuthService {
     });
   }
 
-  login(username: string, password: string) {
+  login(email: string, password: string) {
     return this.http.post<any>('/api/login', {
-      username,
+      email,
       password,
     });
   }
