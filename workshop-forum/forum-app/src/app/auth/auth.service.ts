@@ -49,4 +49,8 @@ export class AuthService {
       password,
     });
   }
+
+  getProfile() {
+    return this.http.get<IUser>('/api/users/profile');
+  }
 }
