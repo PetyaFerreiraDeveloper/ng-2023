@@ -5,24 +5,22 @@ import { WelcomeMessageComponent } from './welcome-message/welcome-message.compo
 import { RouterModule } from '@angular/router';
 import { AppEmailDirective } from './validators/app-email.directive';
 import { MatchPasswordDirective } from './validators/match-password.directive';
-
-
+import { ShortenPipe } from './shorten.pipe';
 
 @NgModule({
   declarations: [
     LoaderComponent,
     WelcomeMessageComponent,
     AppEmailDirective,
-    MatchPasswordDirective
+    MatchPasswordDirective,
+    ShortenPipe,
   ],
-  imports: [
-    CommonModule,
-    RouterModule
-  ], 
+  imports: [CommonModule, RouterModule],
   exports: [
     LoaderComponent,
     WelcomeMessageComponent,
-    AppEmailDirective
-  ]
+    AppEmailDirective,
+    ShortenPipe,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}
