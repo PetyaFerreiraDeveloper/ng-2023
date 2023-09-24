@@ -8,8 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { AuthModule } from './auth/auth.module';
 import { ThemeModule } from './theme/theme.module';
-import { AppInterceptorProvider } from './app.interceptor';
+import { appInterceptorProvider } from './app.interceptor';
 import { AuthenticateComponent } from './authenticate/authenticate.component';
+import { API_ERROR } from './shared/constants';
+import { BehaviorSubject } from 'rxjs';
 
 @NgModule({
   declarations: [AppComponent, AuthenticateComponent],
@@ -23,7 +25,10 @@ import { AuthenticateComponent } from './authenticate/authenticate.component';
     SharedModule,
     ThemeModule,
   ],
-  providers: [AppInterceptorProvider],
+  providers: [
+    appInterceptorProvider,
+    { provide: API_ERROR, useValue: new BehaviorSubject(null) },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
