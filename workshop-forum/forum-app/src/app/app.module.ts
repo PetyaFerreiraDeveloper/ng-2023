@@ -16,9 +16,7 @@ import { BehaviorSubject } from 'rxjs';
 @NgModule({
   declarations: [AppComponent, AuthenticateComponent],
   imports: [
-    AuthModule,
     BrowserModule,
-    ThemeModule,
     AppRoutingModule,
     CoreModule,
     HttpClientModule,
