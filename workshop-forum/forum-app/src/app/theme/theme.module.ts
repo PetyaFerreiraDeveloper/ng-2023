@@ -8,6 +8,7 @@ import { ThemeDetailComponent } from './theme-detail/theme-detail.component';
 import { PostListComponent } from './post-list/post-list.component';
 import { MainComponent } from './main/main.component';
 import { FormsModule } from '@angular/forms';
+import { ThemeCommentComponent } from './theme-comment/theme-comment.component';
 
 
 
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
     NewThemeComponent,
     ThemeDetailComponent, 
     PostListComponent,
-    MainComponent
+    MainComponent,
+    ThemeCommentComponent
   ],
   imports: [
     CommonModule,

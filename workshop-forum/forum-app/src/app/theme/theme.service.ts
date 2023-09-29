@@ -28,13 +28,19 @@ export class ThemeService {
   }
 
   updateTheme(id: string, name: string, text: string) {
-    this.http.put<ITheme>('/api/theme' + id, {
+    return this.http.put<ITheme>('/api/theme' + id, {
       themeName: name,
       postText: text,
     });
   }
 
   deleteThemePost(themeId: string, postId: string) {
-    this.http.delete<ITheme>('/api/theme' + themeId + '/post' + postId);
+    return this.http.delete<ITheme>('/api/theme' + themeId + '/post' + postId);
+  }
+
+  likeThemeComment(postId: string, userId: string) {
+    console.log(postId, userId);
+    
+    return this.http.put('/api/likes' + postId, {user: userId})
   }
 }

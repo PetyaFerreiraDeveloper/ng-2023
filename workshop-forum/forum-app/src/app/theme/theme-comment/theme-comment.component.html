@@ -1,0 +1,32 @@
+<div class="comment">
+  <header class="header">
+    <p>
+      <span>{{ commentObj.userId.username }}</span> posted on
+      <time>{{ commentObj.created_at | dateWithHour }}</time>
+    </p>
+  </header>
+  <div class="comment-main">
+    <div class="userdetails">
+      <img src="/assets/profile.png" alt="avatar" />
+    </div>
+    <div class="post-content">
+      {{ commentObj.text }}
+    </div>
+  </div>
+  <div class="footer">
+    <!-- Figure out if current user has already liked it - if yes, show the red icon, if not show green icon-->
+    <i
+      (click)="handleLike()"
+      *ngIf="!alreadyLiked"
+      class="fas fa-thumbs-up"
+    ></i>
+    <i
+      (click)="handleDisLike()"
+      *ngIf="alreadyLiked"
+      class="fas fa-thumbs-down"
+    ></i>
+    <p>
+      <span>{{ commentObj.likes.length }}</span> likes
+    </p>
+  </div>
+</div>

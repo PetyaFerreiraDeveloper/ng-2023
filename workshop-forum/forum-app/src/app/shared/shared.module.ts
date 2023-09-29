@@ -7,6 +7,8 @@ import { AppEmailDirective } from './validators/app-email.directive';
 import { MatchPasswordDirective } from './validators/match-password.directive';
 import { ShortenPipe } from './pipes/shorten.pipe';
 import { ElapsedTimePipe } from './pipes/elapsed-time.pipe';
+import { ShortenDatePipe } from './pipes/shorten-date.pipe';
+import { DateWithHourPipe } from './pipes/date-with-hour.pipe';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { ElapsedTimePipe } from './pipes/elapsed-time.pipe';
     AppEmailDirective,
     MatchPasswordDirective,
     ShortenPipe,
-    ElapsedTimePipe
+    ElapsedTimePipe,
+    ShortenDatePipe,
+    DateWithHourPipe,
   ],
   imports: [CommonModule, RouterModule],
   exports: [
@@ -23,7 +27,9 @@ import { ElapsedTimePipe } from './pipes/elapsed-time.pipe';
     WelcomeMessageComponent,
     AppEmailDirective,
     ShortenPipe,
-    ElapsedTimePipe
+    ElapsedTimePipe,
+    ShortenDatePipe,
+    DateWithHourPipe,
   ],
 })
 export class SharedModule {}

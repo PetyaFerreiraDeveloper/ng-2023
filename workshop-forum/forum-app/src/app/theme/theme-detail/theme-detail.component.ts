@@ -1,14 +1,36 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ApiService } from 'src/app/api.service';
+import { AuthService } from 'src/app/auth/auth.service';
+import { IPost, ITheme } from 'src/app/shared/interfaces';
 
 @Component({
   selector: 'app-theme-detail',
   templateUrl: './theme-detail.component.html',
-  styleUrls: ['./theme-detail.component.scss']
+  styleUrls: ['./theme-detail.component.scss'],
 })
-export class ThemeDetailComponent {
-constructor(private activatedRoute:ActivatedRoute){
-  console.log(this.activatedRoute.snapshot.data?.['theme']);
-  
-}
+export class ThemeDetailComponent implements OnInit {
+  currentTheme!: ITheme;
+  currentThemeId: string | null = null;
+  comments: IPost[] = []
+  errorFetchingData = false;
+
+  get user() {
+    return this.authService.user;
+  }
+
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private apiService: ApiService,
+    private authService: AuthService
+  ) {}
+
+  ngOnInit() {
+    this.currentTheme = this.activatedRoute.snapshot.data?.['theme'];
+    if (!this.currentTheme) return;
+    this.comments = this.currentTheme.posts
+    // console.log(this.currentTheme.posts);
+  }
+
+ 
 }
