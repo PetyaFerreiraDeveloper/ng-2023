@@ -83,8 +83,10 @@ export class ProfileComponent {
     this.formSubmitted = true;
     if (this.form.invalid) return;
     const { username, email, code, tel } = this.form.value;
-    this.authService.user = { username, email, tel: code + ' ' + tel } as any;
-    this.toggleEditMode();
-    console.log(this.form.value);
+    this.authService
+      .setProfile(username, email, code + ' ' + tel)
+      .subscribe(() => {
+        this.toggleEditMode();
+      });
   }
 }

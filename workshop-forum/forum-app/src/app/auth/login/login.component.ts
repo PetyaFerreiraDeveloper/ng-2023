@@ -1,7 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { Misho } from 'src/app/shared/consts/user';
 import { NgForm } from '@angular/forms';
 import { appEmailDomains } from 'src/app/shared/constants';
 
