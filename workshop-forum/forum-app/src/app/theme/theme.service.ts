@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ITheme } from '../shared/interfaces';
+import { ITheme, IUser } from '../shared/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -17,6 +17,8 @@ export class ThemeService {
   }
 
   getTheme(id: string) {
+    console.log(id);
+    
     return this.http.get<ITheme>('/api/themes' + id);
   }
 
@@ -38,9 +40,11 @@ export class ThemeService {
     return this.http.delete<ITheme>('/api/theme' + themeId + '/post' + postId);
   }
 
-  likeThemeComment(postId: string, userId: string) {
-    console.log(postId, userId);
-    
-    return this.http.put('/api/likes' + postId, {user: userId})
+  likeThemeComment(postId: string, user: IUser) {
+    return this.http.put<IUser>('/api/likes/' + postId, {user: user})
+  }
+
+  unlikeThemeComment(postId: string, user: IUser) {
+    return this.http.put<IUser>('/api/unlike/' + postId, {user: user})
   }
 }

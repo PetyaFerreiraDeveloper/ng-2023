@@ -21,7 +21,6 @@ export class ThemeDetailComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private apiService: ApiService,
     private authService: AuthService
   ) {}
 
@@ -29,7 +28,6 @@ export class ThemeDetailComponent implements OnInit {
     this.currentTheme = this.activatedRoute.snapshot.data?.['theme'];
     if (!this.currentTheme) return;
     this.comments = this.currentTheme.posts
-    // console.log(this.currentTheme.posts);
   }
 
  

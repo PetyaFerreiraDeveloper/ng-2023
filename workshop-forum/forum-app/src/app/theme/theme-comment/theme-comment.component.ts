@@ -20,8 +20,6 @@ export class ThemeCommentComponent implements OnInit {
 
   get user() {
     const user: IUser = this.authService.user!;
-    // console.log(user);
-
     return user;
   }
 
@@ -29,16 +27,25 @@ export class ThemeCommentComponent implements OnInit {
     if (this.commentObj.likes.includes(this.user._id)) {
       this.alreadyLiked = true;
     }
-    // console.log(this.commentObj);
+  }
+
+  toggleLikeMode(): void {
+    this.alreadyLiked = !this.alreadyLiked;
   }
 
   handleLike() {
-    this.themeService.likeThemeComment(this.commentObj._id, this.user._id);
-    this.alreadyLiked = true;
+    this.themeService
+      .likeThemeComment(this.commentObj._id, this.user)
+      .subscribe(() => {
+        this.toggleLikeMode();
+      });
   }
 
   handleDisLike() {
-    this.themeService.likeThemeComment(this.commentObj._id, this.user._id);
-    this.alreadyLiked = false;
+    this.themeService
+      .unlikeThemeComment(this.commentObj._id, this.user)
+      .subscribe(() => {
+        this.toggleLikeMode();
+      });
   }
 }
